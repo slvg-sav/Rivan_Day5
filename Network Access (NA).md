@@ -1,5 +1,5 @@
 
-<!-- Your monitor number = #$34T# -->
+<!-- Your monitor number = 41 -->
 
 
 ## IPv6 Subnetting
@@ -396,7 +396,7 @@ conf t
 ~~~
 !@CoreTAAS
 conf t
- hostname CoreTAAS-#$34T#
+ hostname CoreTAAS-41
  enable secret pass
  service password-encryption
  no ip domain lookup
@@ -410,7 +410,7 @@ conf t
   login
   exec-timeout 0 0
  int vlan 1
-  ip add 10.#$34T#.1.2 255.255.255.0
+  ip add 10.41.1.2 255.255.255.0
   no shut
   end
 ~~~
@@ -420,7 +420,7 @@ conf t
 ~~~
 !@CoreBABA
 conf t
- hostname CoreBABA-#$34T#
+ hostname CoreBABA-41
  enable secret pass
  service password-encryption
  no ip domain lookup
@@ -434,7 +434,7 @@ conf t
   login
   exec-timeout 0 0
  int vlan 1
-  ip add 10.#$34T#.1.4 255.255.255.0
+  ip add 10.41.1.4 255.255.255.0
   no shut
   end
 ~~~
@@ -449,16 +449,16 @@ conf t
 
 ~~~
 !@cmd
-ping 10.#$34T#.1.2
-ping 10.#$34T#.1.4
+ping 10.41.1.2
+ping 10.41.1.4
 
-nmap -v 10.#$34T#.1.2
-nmap -v 10.#$34T#.1.4
+nmap -v 10.41.1.2
+nmap -v 10.41.1.4
 ~~~
 
 Telnet the following
-- 10.#$34T#.1.2
-- 10.#$34T#.1.4
+- 10.41.1.2
+- 10.41.1.4
 
 
 <br>
@@ -648,7 +648,7 @@ boot
 ~~~
 !@CoreTAAS
 conf t
- hostname coreTaas-#$34T#
+ hostname coreTaas-41
  enable secret pass
  service password-encryption
  no logging console
@@ -663,19 +663,19 @@ conf t
   exec-timeout 0 0
  int vlan 1
   no shut
-  ip add 10.#$34T#.1.2 255.255.255.0
+  ip add 10.41.1.2 255.255.255.0
   desc DEFAULT-VLAN
  int vlan 10
   no shut
-  ip add 10.#$34T#.10.2 255.255.255.0
+  ip add 10.41.10.2 255.255.255.0
   desc WIFI-VLAN
  int vlan 50
   no shut
-  ip add 10.#$34T#.50.2 255.255.255.0
+  ip add 10.41.50.2 255.255.255.0
   desc CCTV-VLAN
  int vlan 100
   no shut
-  ip add 10.#$34T#.100.2 255.255.255.0
+  ip add 10.41.100.2 255.255.255.0
   desc VOICE-VLAN
  end
 ~~~
@@ -685,7 +685,7 @@ conf t
 ~~~
 !@CoreBABA
 conf t
- hostname coreBaba-#$34T#
+ hostname coreBaba-41
  enable secret pass
  service password-encryption
  no logging console
@@ -701,54 +701,54 @@ conf t
  int gi 0/1
   no shut
   no switchport
-  ip add 10.#$34T#.#$34T#.4 255.255.255.0
+  ip add 10.41.41.4 255.255.255.0
  int vlan 1
   no shut
-  ip add 10.#$34T#.1.4 255.255.255.0
+  ip add 10.41.1.4 255.255.255.0
   desc DEFAULT-VLAN
  int vlan 10
   no shut
-  ip add 10.#$34T#.10.4 255.255.255.0
+  ip add 10.41.10.4 255.255.255.0
   desc WIFI-VLAN
  int vlan 50
   no shut
-  ip add 10.#$34T#.50.4 255.255.255.0
+  ip add 10.41.50.4 255.255.255.0
   desc CCTV-VLAN
  int vlan 100
   no shut
-  ip add 10.#$34T#.100.4 255.255.255.0
+  ip add 10.41.100.4 255.255.255.0
   desc VOICE-VLAN
  end
 
 !@dhcp
 conf t
- ip dhcp excluded-add 10.#$34T#.1.1 10.#$34T#.1.100
- ip dhcp excluded-add 10.#$34T#.10.1 10.#$34T#.10.100
- ip dhcp excluded-add 10.#$34T#.50.1 10.#$34T#.50.100
- ip dhcp excluded-add 10.#$34T#.100.1 10.#$34T#.100.100
+ ip dhcp excluded-add 10.41.1.1 10.41.1.100
+ ip dhcp excluded-add 10.41.10.1 10.41.10.100
+ ip dhcp excluded-add 10.41.50.1 10.41.50.100
+ ip dhcp excluded-add 10.41.100.1 10.41.100.100
 
  ip dhcp pool POOLDATA
-  network 10.#$34T#.1.0 255.255.255.0
-  default-router 10.#$34T#.1.4
+  network 10.41.1.0 255.255.255.0
+  default-router 10.41.1.4
   domain-name MGMTDATA.COM
-  dns-server 10.#$34T#.1.10
+  dns-server 10.41.1.10
  ip dhcp pool POOLWIFI
-  network 10.#$34T#.10.0 255.255.255.0
-  default-router 10.#$34T#.10.4
+  network 10.41.10.0 255.255.255.0
+  default-router 10.41.10.4
   domain-name WIFIDATA.COM
-  dns-server 10.#$34T#.1.10
-  option 43 ip 10.#$34T#.10.#$34T#
+  dns-server 10.41.1.10
+  option 43 ip 10.41.10.41
  ip dhcp pool POOLCCTV
-  network 10.#$34T#.50.0 255.255.255.0
-  default-router 10.#$34T#.50.4
+  network 10.41.50.0 255.255.255.0
+  default-router 10.41.50.4
   domain-name CCTVDATA.COM
-  dns-server 10.#$34T#.1.10
+  dns-server 10.41.1.10
  ip dhcp pool POOLVOICE
-  network 10.#$34T#.100.0 255.255.255.0
-  default-router 10.#$34T#.100.4
+  network 10.41.100.0 255.255.255.0
+  default-router 10.41.100.4
   domain-name VOICEDATA.COM
-  dns-server 10.#$34T#.1.10
-  option 150 ip 10.#$34T#.100.8
+  dns-server 10.41.1.10
+  option 150 ip 10.41.100.8
  end
 
 !@switchport
@@ -789,8 +789,8 @@ conf t
 !@ospf routing corebaba
  conf t
   router ospf 1
-   router-id 10.#$34T#.#$34T#.4
-   network 10.#$34T#.0.0 0.0.255.255 area 0
+   router-id 10.41.41.4
+   network 10.41.0.0 0.0.255.255 area 0
   int gi 0/1
    ip ospf network point-to-point
    end
@@ -801,7 +801,7 @@ conf t
 ~~~
 !@CUCM
 conf t
- hostname CUCM-#$34T#
+ hostname CUCM-41
  enable secret pass
  service password-encryption
  no logging console
@@ -816,14 +816,14 @@ conf t
   exec-timeout 0 0
  int fa 0/0
   no shut
-  ip add 10.#$34T#.100.8 255.255.255.0
+  ip add 10.41.100.8 255.255.255.0
  end
 
 !@ospf routing CUCM
 conf t
  router ospf 1
-  router-id 10.#$34T#.100.8
-  network 10.#$34T#.100.0 0.0.0.255 area 0
+  router-id 10.41.100.8
+  network 10.41.100.0 0.0.0.255 area 0
   end
 ~~~
 
@@ -832,7 +832,7 @@ conf t
 ~~~
 !@EDGE
 conf t
- hostname EDGE-#$34T#
+ hostname EDGE-41
  enable secret pass
  service password-encryption
  no logging console
@@ -847,24 +847,24 @@ conf t
   exec-timeout 0 0
  int gi 0/0/0
   no shut
-  ip add 10.#$34T#.#$34T#.1 255.255.255.0
+  ip add 10.41.41.1 255.255.255.0
   desc INSIDE
  int gi 0/0/1
   no shut
-  ip add 200.0.0.#$34T# 255.255.255.0
+  ip add 200.0.0.41 255.255.255.0
   desc OUTSIDE
  int loopback 0
-  ip add #$34T#.0.0.1 255.255.255.255
+  ip add 41.0.0.1 255.255.255.255
   desc VIRTUALIP
  end
 
 !@ospf routing EDGE
 conf t
  router ospf 1
-  router-id #$34T#.0.0.1
+  router-id 41.0.0.1
   network 200.0.0.0 0.0.0.255 area 0
-  network 10.#$34T#.#$34T#.0 0.0.0.255 area 0
-  network #$34T#.0.0.1 0.0.0.0 area 0
+  network 10.41.41.0 0.0.0.255 area 0
+  network 41.0.0.1 0.0.0.0 area 0
  int gi 0/0/0
   ip ospf network point-to-point
   end
@@ -1565,17 +1565,17 @@ show int po1 | inc BW
 conf t
  int vlan 10
   description WIFIVLAN
-  ip add 10.#$34T#.10.2 255.255.255.0
+  ip add 10.41.10.2 255.255.255.0
   no shut
   exit
  int vlan 50
   description CCTVVLAN
-  ip add 10.#$34T#.50.2 255.255.255.0
+  ip add 10.41.50.2 255.255.255.0
   no shut
   exit
  int vlan 100
   description VOICEVLAN
-  ip add 10.#$34T#.100.2 255.255.255.0
+  ip add 10.41.100.2 255.255.255.0
   no shut
  int range fa0/2,fa0/4
   switchport mode access
@@ -1605,17 +1605,17 @@ conf t
 conf t
  int vlan 10
   description WIFIVLAN
-  ip add 10.#$34T#.10.4 255.255.255.0
+  ip add 10.41.10.4 255.255.255.0
   no shut
   exit
  int vlan 50
   description CCTVVLAN
-  ip add 10.#$34T#.50.4 255.255.255.0
+  ip add 10.41.50.4 255.255.255.0
   no shut
   exit
  int vlan 100
   description VOICEVLAN
-  ip add 10.#$34T#.100.4 255.255.255.0
+  ip add 10.41.100.4 255.255.255.0
   no shut
   end
 ~~~
@@ -1879,7 +1879,7 @@ conf t
  track 1 int g0/1 line-protocol
  !
  int vlan 1
-  standby 1 ip 10.#$34T#.1.6
+  standby 1 ip 10.41.1.6
   standby 1 preempt
   standby 1 Priority 150
   standby 1 Track 1 decrement 60
@@ -1894,7 +1894,7 @@ conf t
  hostname CBABA-GLOBE
  !
  int vlan 1
-  standby 1 ip 10.#$34T#.1.6
+  standby 1 ip 10.41.1.6
   standby 1 Priority 100
   end
 ~~~
